@@ -28,7 +28,7 @@ public class Login extends HttpServlet {
 		
 		if(name=="Amjad" ||pass1==12345678) {
 			rd=req.getRequestDispatcher("/view.html");
-			rd.forward(req,res);
+			rd.include(req,res);
 		}else {
 			pw.println("wrong user");
 		}
