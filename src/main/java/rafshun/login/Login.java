@@ -3,6 +3,7 @@ package rafshun.login;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +18,7 @@ public class Login extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		PrintWriter pw=null;
 		String name=null,pass=null;
+		RequestDispatcher rd=null;
 		long pass1=0;
 		pw=res.getWriter();
 		res.setContentType("text/html");
@@ -25,7 +27,8 @@ public class Login extends HttpServlet {
 		pass1=Long.parseLong(pass);
 		
 		if(name=="Amjad" ||pass1==12345678) {
-			pw.println("Login Sucessful");
+			rd=req.getRequestDispatcher("/view.html");
+			rd.forward(req,res);
 		}else {
 			pw.println("wrong user");
 		}
